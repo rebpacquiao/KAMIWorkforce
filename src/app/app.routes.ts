@@ -55,6 +55,11 @@ export const routes: Routes = [
       ),
   },
   {
+    path: 'users',
+    loadComponent: () =>
+      import('./pages/users/users.component').then((com) => com.UsersComponent),
+  },
+  {
     path: '',
     pathMatch: 'full',
     loadComponent: () =>

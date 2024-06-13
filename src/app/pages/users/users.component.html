@@ -1,1 +1,68 @@
-<p>users works!</p>
+<h1>Users</h1>
+<div class="custom-light-theme">
+  <table mat-table [dataSource]="dataSource" class="mat-table">
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let post">{{ post.id }}</td>
+    </ng-container>
+
+    <!-- User Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let post">{{ post.name }}</td>
+    </ng-container>
+
+    <!-- Username -->
+    <ng-container matColumnDef="username">
+      <th mat-header-cell *matHeaderCellDef>Username</th>
+      <td mat-cell *matCellDef="let post">{{ post.username }}</td>
+    </ng-container>
+
+    <!--Email -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef>Email</th>
+      <td mat-cell *matCellDef="let post">{{ post.email }}</td>
+    </ng-container>
+
+    <!--Address -->
+    <ng-container matColumnDef="city">
+      <th mat-header-cell *matHeaderCellDef>City</th>
+      <td mat-cell *matCellDef="let post">{{ post.address.city }}</td>
+    </ng-container>
+
+    <!--Phone -->
+    <ng-container matColumnDef="phone">
+      <th mat-header-cell *matHeaderCellDef>Phone</th>
+      <td mat-cell *matCellDef="let post">{{ post.phone }}</td>
+    </ng-container>
+
+    <!--Website -->
+    <ng-container matColumnDef="website">
+      <th mat-header-cell *matHeaderCellDef>Website</th>
+      <td mat-cell *matCellDef="let post">{{ post.website }}</td>
+    </ng-container>
+
+    <!--Company -->
+    <ng-container matColumnDef="companyName">
+      <th mat-header-cell *matHeaderCellDef>Company</th>
+      <td mat-cell *matCellDef="let post">{{ post.company.name }}</td>
+    </ng-container>
+
+    <!-- Action Column -->
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let post">
+        <!-- Example Action Button -->
+        <button (click)="viewPost(post.id)" mat-button>View</button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+  ></mat-paginator>
+</div>
