@@ -1,1 +1,8 @@
-<p>single-photo works!</p>
+<ng-container *ngIf="post$ | async as post">
+  <mat-card class="photo">
+    <mat-card-header>
+      <mat-card-title>{{ post.title }}</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image [src]="post.url" alt="{{ post.title }}" />
+  </mat-card>
+</ng-container>
