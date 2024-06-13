@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component } from '@angular/core';
+import { ActivatedRoute, RouterModule } from '@angular/router'; // Import RouterModule
 import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
 import { UsersService } from '../../services/users.service';
@@ -10,9 +10,9 @@ import { MatCardModule } from '@angular/material/card';
 @Component({
   selector: 'app-user-profile',
   standalone: true,
-  imports: [CommonModule, MatCardModule, MatButtonModule],
+  imports: [CommonModule, MatCardModule, MatButtonModule, RouterModule],
   templateUrl: './user-profile.component.html',
-  styleUrl: './user-profile.component.scss',
+  styleUrls: ['./user-profile.component.scss'],
 })
 export class UserProfileComponent {
   post$!: Observable<User>;
