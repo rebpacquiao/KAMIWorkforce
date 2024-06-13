@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class AuthService {
   user = new BehaviorSubject<User | null>(null);
   private supabase!: SupabaseClient;
-  private excludedPathsForDashboard = ['/list'];
+  private excludedPathsForDashboard = ['/list', 'post/:id'];
 
   constructor(private router: Router) {
     this.supabase = createClient(

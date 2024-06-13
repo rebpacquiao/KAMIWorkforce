@@ -13,7 +13,7 @@ import { Post } from '../../model/post.model';
   styleUrls: ['./post-list-page.component.scss'],
 })
 export class PostListPageComponent implements OnInit, AfterViewInit {
-  displayedColumns: string[] = ['id', 'userId', 'title', 'body'];
+  displayedColumns: string[] = ['id', 'userId', 'title', 'body', 'action'];
   dataSource = new MatTableDataSource<Post>();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;

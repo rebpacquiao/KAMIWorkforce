@@ -22,6 +22,13 @@ export const routes: Routes = [
       ),
   },
   {
+    path: 'post/:id',
+    loadComponent: () =>
+      import('./pages/single-post/single-post.component').then(
+        (com) => com.SinglePostComponent
+      ),
+  },
+  {
     path: '',
     pathMatch: 'full',
     loadComponent: () =>
