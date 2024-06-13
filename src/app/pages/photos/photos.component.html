@@ -1,15 +1,24 @@
 <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-4 p-4">
   <div
     *ngFor="let post of paginatedPosts"
-    class="rounded overflow-hidden shadow-lg"
+    class="flex flex-col rounded overflow-hidden shadow-lg"
+    style="min-height: 300px"
   >
     <div
       style="width: 100%; height: 150px; background-image: url('{{
         post.thumbnailUrl
       }}'); background-size: cover; background-position: center;"
     ></div>
-    <div class="px-6 py-4" style="background: rgba(255, 255, 255, 0.8)">
-      <div class="text-sm mb-2">{{ post.title }}</div>
+    <div
+      class="flex-grow px-6 py-4"
+      style="
+        background: rgba(255, 255, 255, 0.8);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      "
+    >
+      <div class="text-sm mb-2" style="min-height: 4em">{{ post.title }}</div>
     </div>
     <div class="px-6 pt-4 pb-2">
       <button
