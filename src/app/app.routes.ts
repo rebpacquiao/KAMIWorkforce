@@ -15,7 +15,7 @@ export const routes: Routes = [
       ),
   },
   {
-    path: 'list',
+    path: 'post',
     loadComponent: () =>
       import('./pages/post-list-page/post-list-page.component').then(
         (com) => com.PostListPageComponent
