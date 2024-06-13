@@ -1,1 +1,277 @@
-<p>user-profile works!</p>
+<div class="w-full p-6 mx-auto" *ngIf="post$ | async as post">
+  <div class="flex flex-wrap -mx-3">
+    <div class="w-full max-w-full px-3 shrink-0 md:w-8/12 md:flex-0">
+      <div
+        class="relative flex flex-col min-w-0 break-words bg-white border-0 shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border"
+      >
+        <div
+          class="border-black/12.5 rounded-t-2xl border-b-0 border-solid p-6 pb-0"
+        >
+          <div class="flex items-center">
+            <p class="mb-0 dark:text-white/80">Edit Profile</p>
+            <a
+              href="/users"
+              class="inline-block px-8 py-2 mb-4 ml-auto leading-normal text-center text-white align-middle transition-all ease-in bg-blue-500 border-0 rounded-lg shadow-md cursor-pointer text-xs tracking-tight-rem hover:shadow-xs hover:-translate-y-px active:opacity-85"
+            >
+              Back
+            </a>
+          </div>
+        </div>
+        <div class="flex-auto p-6">
+          <p
+            class="leading-normal uppercase dark:text-white dark:opacity-60 text-sm"
+          >
+            User Information
+          </p>
+          <div class="flex flex-wrap -mx-3">
+            <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
+              <div class="mb-4">
+                <label
+                  for="username"
+                  class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80"
+                  >Username</label
+                >
+                <input
+                  type="text"
+                  name="username"
+                  value="{{ post.username }}"
+                  class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none"
+                />
+              </div>
+            </div>
+            <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
+              <div class="mb-4">
+                <label
+                  for="email"
+                  class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80"
+                  >Email address</label
+                >
+                <input
+                  type="email"
+                  name="email"
+                  value="{{ post.email }}"
+                  class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none"
+                />
+              </div>
+            </div>
+            <div class="w-full max-w-full px-3 shrink-0 md:flex-0">
+              <div class="mb-4">
+                <label
+                  for="first name"
+                  class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80"
+                  >Full Name</label
+                >
+                <input
+                  type="text"
+                  name="fullname"
+                  value="{{ post.name }}"
+                  class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none"
+                />
+              </div>
+            </div>
+          </div>
+          <hr
+            class="h-px mx-0 my-4 bg-transparent border-0 opacity-25 bg-gradient-to-r from-transparent via-black/40 to-transparent dark:bg-gradient-to-r dark:from-transparent dark:via-white dark:to-transparent"
+          />
+          <p
+            class="leading-normal uppercase dark:text-white dark:opacity-60 text-sm"
+          >
+            Contact Information
+          </p>
+          <div class="flex flex-wrap -mx-3">
+            <div class="w-full max-w-full px-3 shrink-0 md:w-full md:flex-0">
+              <div class="mb-4">
+                <label
+                  for="address"
+                  class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80"
+                  >Address</label
+                >
+                <input
+                  type="text"
+                  name="address"
+                  value=" {{ post.address.street }} {{ post.address.suite }},{{
+                    post.address.city
+                  }}"
+                  class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none"
+                />
+              </div>
+            </div>
+            <div class="w-full max-w-full px-3 shrink-0 md:w-4/12 md:flex-0">
+              <div class="mb-4">
+                <label
+                  for="city"
+                  class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80"
+                  >City</label
+                >
+                <input
+                  type="text"
+                  name="city"
+                  value="{{ post.address.city }}"
+                  class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none"
+                />
+              </div>
+            </div>
+            <div class="w-full max-w-full px-3 shrink-0 md:w-4/12 md:flex-0">
+              <div class="mb-4">
+                <label
+                  for="Street"
+                  class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80"
+                  >Street</label
+                >
+                <input
+                  type="text"
+                  name="country"
+                  value="{{ post.address.street }}"
+                  class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none"
+                />
+              </div>
+            </div>
+            <div class="w-full max-w-full px-3 shrink-0 md:w-4/12 md:flex-0">
+              <div class="mb-4">
+                <label
+                  for="postal code"
+                  class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80"
+                  >Postal code</label
+                >
+                <input
+                  type="text"
+                  name="postal code"
+                  value="{{ post.address.zipcode }}"
+                  class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none"
+                />
+              </div>
+            </div>
+          </div>
+          <hr
+            class="h-px mx-0 my-4 bg-transparent border-0 opacity-25 bg-gradient-to-r from-transparent via-black/40 to-transparent dark:bg-gradient-to-r dark:from-transparent dark:via-white dark:to-transparent"
+          />
+          <p
+            class="leading-normal uppercase dark:text-white dark:opacity-60 text-sm"
+          >
+            About me
+          </p>
+          <div class="flex flex-wrap -mx-3">
+            <div class="w-full max-w-full px-3 shrink-0 md:w-full md:flex-0">
+              <div class="mb-4">
+                <label
+                  for="about me"
+                  class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80"
+                  >About me</label
+                >
+                <input
+                  type="text"
+                  name="about me"
+                  value="{{ post.company.catchPhrase }}"
+                  class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="w-full max-w-full px-3 mt-6 shrink-0 md:w-4/12 md:flex-0 md:mt-0"
+    >
+      <div
+        class="relative flex flex-col min-w-0 break-words bg-white border-0 shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border"
+      >
+        <img
+          class="w-full rounded-t-2xl"
+          src="https://media.licdn.com/dms/image/C5616AQG6ahYNCIcO9Q/profile-displaybackgroundimage-shrink_350_1400/0/1621319672752?e=1723680000&v=beta&t=iFooWO3n6qHfTQUdzcl6YsuZtOCrGHtKBOtk3t49H0k"
+          alt="profile cover image"
+        />
+        <div class="flex flex-wrap justify-center -mx-3">
+          <div class="w-4/12 max-w-full px-3 flex-0">
+            <div class="mb-6 -mt-6 lg:mb-0 lg:-mt-16">
+              <a class="bg-white rounded-full">
+                <img
+                  class="h-auto max-w-full border-2 border-blue-50 border-solid rounded-circle bg-white"
+                  src="https://avatars.githubusercontent.com/u/29487461?v=4"
+                  alt="profile image"
+                />
+              </a>
+            </div>
+          </div>
+        </div>
+        <div
+          class="border-black/12.5 rounded-t-2xl p-6 text-center pt-0 pb-6 lg:pt-2 lg:pb-4"
+        >
+          <div class="flex justify-between">
+            <button
+              type="button"
+              class="hidden px-8 py-2 font-bold leading-normal text-center text-white align-middle transition-all ease-in border-0 rounded-lg shadow-md cursor-pointer text-xs bg-cyan-500 lg:block tracking-tight-rem hover:shadow-xs hover:-translate-y-px active:opacity-85"
+            >
+              Connect
+            </button>
+            <button
+              type="button"
+              class="block px-8 py-2 font-bold leading-normal text-center text-white align-middle transition-all ease-in border-0 rounded-lg shadow-md cursor-pointer text-xs bg-cyan-500 lg:hidden tracking-tight-rem hover:shadow-xs hover:-translate-y-px active:opacity-85"
+            >
+              <i class="ni ni-collection text-2.8"></i>
+            </button>
+            <button
+              type="button"
+              class="hidden px-8 py-2 font-bold leading-normal text-center text-white align-middle transition-all ease-in border-0 rounded-lg shadow-md cursor-pointer text-xs bg-slate-700 lg:block tracking-tight-rem hover:shadow-xs hover:-translate-y-px active:opacity-85"
+            >
+              Message
+            </button>
+            <button
+              type="button"
+              class="block px-8 py-2 font-bold leading-normal text-center text-white align-middle transition-all ease-in border-0 rounded-lg shadow-md cursor-pointer text-xs bg-slate-700 lg:hidden tracking-tight-rem hover:shadow-xs hover:-translate-y-px active:opacity-85"
+            >
+              <i class="ni ni-email-83 text-2.8"></i>
+            </button>
+          </div>
+        </div>
+        <div class="flex-auto p-6 pt-0">
+          <div class="flex flex-wrap -mx-3">
+            <div class="w-full max-w-full px-3 flex-1-0">
+              <div class="flex justify-center">
+                <div class="grid text-center">
+                  <span class="font-bold dark:text-white text-lg">22</span>
+                  <span
+                    class="leading-normal dark:text-white text-sm opacity-80"
+                    >Friends</span
+                  >
+                </div>
+                <div class="grid mx-6 text-center">
+                  <span class="font-bold dark:text-white text-lg">10</span>
+                  <span
+                    class="leading-normal dark:text-white text-sm opacity-80"
+                    >Photos</span
+                  >
+                </div>
+                <div class="grid text-center">
+                  <span class="font-bold dark:text-white text-lg">89</span>
+                  <span
+                    class="leading-normal dark:text-white text-sm opacity-80"
+                    >Comments</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-6 text-center">
+            <h2 class="dark:text-white">
+              {{ post.name }}
+            </h2>
+            <div
+              class="mb-2 font-semibold leading-relaxed text-base dark:text-white/80 text-slate-700"
+            >
+              <i class="mr-2 dark:text-white ni ni-pin-3"></i>
+              {{ post.address.street }} {{ post.address.suite }},
+              {{ post.address.city }}
+            </div>
+            <div
+              class="mt-6 mb-2 font-semibold leading-relaxed text-base dark:text-white/80 text-slate-700"
+            >
+              <i class="mr-2 dark:text-white ni ni-briefcase-24"></i>
+              {{ post.company.name }}, {{ post.company.bs }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
