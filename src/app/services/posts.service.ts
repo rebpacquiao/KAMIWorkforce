@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, from } from 'rxjs';
+import { environment } from '../../environments/environment.development';
 
 interface Post {
   userId: number;
@@ -9,14 +10,13 @@ interface Post {
 }
 
 @Injectable({
-  providedIn: 'root', // Assuming posts are globally accessible
+  providedIn: 'root',
 })
 export class PostsService {
-  private apiUrl = 'https://jsonplaceholder.typicode.com/posts';
+  private apiUrl = environment.postAPIUrl;
 
   constructor() {}
 
-  // Fetch all posts using fetch API and return an Observable
   getAllPosts(): Observable<Post[]> {
     return from(
       fetch(this.apiUrl).then((response) => {
