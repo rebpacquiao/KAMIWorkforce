@@ -13,8 +13,14 @@ import { User } from '../../model/users.model';
 import { Router } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
+
+interface Sorting {
+  value: string;
+  viewValue: string;
+}
 
 @Component({
   selector: 'app-users',
@@ -26,6 +32,7 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     MatFormFieldModule,
     MatInputModule,
+    MatSelectModule,
     MatIconModule,
   ],
   templateUrl: './users.component.html',
@@ -48,6 +55,11 @@ export class UsersComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   searchTerm: string = '';
+  currentSortOrder: string = '';
+  sort: { value: string; viewValue: string }[] = [
+    { value: 'name-asc', viewValue: 'Ascending' },
+    { value: 'name-desc', viewValue: 'Descending' },
+  ];
 
   constructor(
     private postsService: UsersService,
@@ -88,5 +100,24 @@ export class UsersComponent implements OnInit, AfterViewInit {
 
   viewPost(postId: number): void {
     this.router.navigate(['/profile', postId]);
+  }
+
+  sortData(sortOrder: string, propertyName: string): void {
+    const sortedData = this.allUsers.sort((a, b) => {
+      // Corrected from `property` to `propertyName`
+      const aValue = (a as any)[propertyName];
+      const bValue = (b as any)[propertyName];
+
+      if (aValue < bValue) {
+        return sortOrder === 'name-asc' ? -1 : 1;
+      }
+      if (aValue > bValue) {
+        return sortOrder === 'name-asc' ? 1 : -1;
+      }
+      return 0;
+    });
+
+    this.dataSource.data = sortedData;
+    this.cdr.detectChanges();
   }
 }
