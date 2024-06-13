@@ -60,6 +60,13 @@ export const routes: Routes = [
       import('./pages/users/users.component').then((com) => com.UsersComponent),
   },
   {
+    path: 'profile/:id',
+    loadComponent: () =>
+      import('./pages/user-profile/user-profile.component').then(
+        (com) => com.UserProfileComponent
+      ),
+  },
+  {
     path: '',
     pathMatch: 'full',
     loadComponent: () =>

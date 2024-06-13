@@ -19,6 +19,8 @@ import { AlbumComponent } from './pages/album/album.component';
 import { SingleAlbumComponent } from './pages/single-album/single-album.component';
 import { PhotosComponent } from './pages/photos/photos.component';
 import { SinglePhotoComponent } from './pages/single-photo/single-photo.component';
+import { UsersComponent } from './pages/users/users.component';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import { SinglePhotoComponent } from './pages/single-photo/single-photo.componen
     SingleAlbumComponent,
     PhotosComponent,
     SinglePhotoComponent,
+    UsersComponent,
+    UserProfileComponent,
     SnakeCaseToTitleCasePipe,
   ],
   imports: [

@@ -58,6 +58,6 @@ export class UsersComponent implements OnInit, AfterViewInit {
   }
 
   viewPost(postId: number): void {
-    this.router.navigate(['/post', postId]);
+    this.router.navigate(['/profile', postId]);
   }
 }
