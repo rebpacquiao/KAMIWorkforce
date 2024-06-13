@@ -48,6 +48,13 @@ export const routes: Routes = [
       ),
   },
   {
+    path: 'single-photo/:id',
+    loadComponent: () =>
+      import('./pages/single-photo/single-photo.component').then(
+        (com) => com.SinglePhotoComponent
+      ),
+  },
+  {
     path: '',
     pathMatch: 'full',
     loadComponent: () =>

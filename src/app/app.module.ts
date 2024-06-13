@@ -18,6 +18,7 @@ import { SinglePostComponent } from './pages/single-post/single-post.component';
 import { AlbumComponent } from './pages/album/album.component';
 import { SingleAlbumComponent } from './pages/single-album/single-album.component';
 import { PhotosComponent } from './pages/photos/photos.component';
+import { SinglePhotoComponent } from './pages/single-photo/single-photo.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { PhotosComponent } from './pages/photos/photos.component';
     AlbumComponent,
     SingleAlbumComponent,
     PhotosComponent,
+    SinglePhotoComponent,
     SnakeCaseToTitleCasePipe,
   ],
   imports: [

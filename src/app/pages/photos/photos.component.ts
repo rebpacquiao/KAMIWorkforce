@@ -38,7 +38,7 @@ export class PhotosComponent implements OnInit {
   }
 
   viewPost(postId: number): void {
-    this.router.navigate(['/post', postId]);
+    this.router.navigate(['/single-photo', postId]);
   }
 
   get paginatedPosts(): Photos[] {
