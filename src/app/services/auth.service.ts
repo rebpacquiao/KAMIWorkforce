@@ -33,7 +33,7 @@ export class AuthService {
           JSON.stringify({ currentSession: session })
         );
         if (!router.url.includes('list')) {
-          this.router.navigate(['/dashboard']);
+          //this.router.navigate(['/dashboard']);
         }
       } else if (
         event === 'SIGNED_OUT' ||
@@ -41,7 +41,7 @@ export class AuthService {
         session === null
       ) {
         sessionStorage.removeItem('supabaseSession');
-        this.router.navigate(['/login']);
+        //this.router.navigate(['/login']);
       }
     });
   }

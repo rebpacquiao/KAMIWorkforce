@@ -8,16 +8,19 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { SnakeCaseToTitleCasePipe } from './snake-case-to-title-case.pipe';
 import { StoreModule } from '@ngrx/store';
 import { userReducer } from './reducers/user.reducer';
+import { MatTableModule } from '@angular/material/table';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+import { PostListPageComponent } from './pages/post-list-page/post-list-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
+    PostListPageComponent,
     SnakeCaseToTitleCasePipe,
   ],
   imports: [
@@ -25,6 +28,7 @@ import { LoginComponent } from './login/login.component';
     HttpClientModule,
     MatFormFieldModule,
     MatInputModule,
+    MatTableModule,
     MatIconModule,
     MatButtonModule,
     StoreModule.forRoot({
