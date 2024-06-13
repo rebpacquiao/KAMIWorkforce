@@ -8,4 +8,5 @@ export const environment = {
   API_KEY: '64f60853740a1ee3ba20d0fb595c97d5',
   BASE_URL: 'https://api.openweathermap.org/data/2.5/',
   postAPIUrl: 'https://jsonplaceholder.typicode.com/posts',
+  albumAPIUrl: 'https://jsonplaceholder.typicode.com/albums',
 };

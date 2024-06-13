@@ -29,6 +29,11 @@ export const routes: Routes = [
       ),
   },
   {
+    path: 'album',
+    loadComponent: () =>
+      import('./pages/album/album.component').then((com) => com.AlbumComponent),
+  },
+  {
     path: '',
     pathMatch: 'full',
     loadComponent: () =>
