@@ -4,6 +4,7 @@ import { PostsService } from '../../services/posts.service';
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { MatPaginatorModule, MatPaginator } from '@angular/material/paginator';
 import { Post } from '../../model/post.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-post-list-page',
@@ -18,7 +19,7 @@ export class PostListPageComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private postsService: PostsService) {}
+  constructor(private postsService: PostsService, private router: Router) {}
 
   ngOnInit() {
     this.postsService.getAllPosts().subscribe({
@@ -31,5 +32,9 @@ export class PostListPageComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+  }
+
+  viewPost(postId: number): void {
+    this.router.navigate(['/post', postId]);
   }
 }

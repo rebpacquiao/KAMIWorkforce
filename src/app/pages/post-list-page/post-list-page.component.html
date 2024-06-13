@@ -29,7 +29,7 @@
       <th mat-header-cell *matHeaderCellDef>Actions</th>
       <td mat-cell *matCellDef="let post">
         <!-- Example Action Button -->
-        <button mat-button>View</button>
+        <button (click)="viewPost(post.id)" mat-button>View</button>
       </td>
     </ng-container>
 
