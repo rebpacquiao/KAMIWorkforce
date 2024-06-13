@@ -41,6 +41,13 @@ export const routes: Routes = [
       ),
   },
   {
+    path: 'photo',
+    loadComponent: () =>
+      import('./pages/photos/photos.component').then(
+        (com) => com.PhotosComponent
+      ),
+  },
+  {
     path: '',
     pathMatch: 'full',
     loadComponent: () =>

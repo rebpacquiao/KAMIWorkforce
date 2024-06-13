@@ -17,6 +17,7 @@ import { PostListPageComponent } from './pages/post-list-page/post-list-page.com
 import { SinglePostComponent } from './pages/single-post/single-post.component';
 import { AlbumComponent } from './pages/album/album.component';
 import { SingleAlbumComponent } from './pages/single-album/single-album.component';
+import { PhotosComponent } from './pages/photos/photos.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { SingleAlbumComponent } from './pages/single-album/single-album.componen
     SinglePostComponent,
     AlbumComponent,
     SingleAlbumComponent,
+    PhotosComponent,
     SnakeCaseToTitleCasePipe,
   ],
   imports: [
