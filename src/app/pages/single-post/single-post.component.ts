@@ -4,11 +4,13 @@ import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
 import { PostsService } from '../../services/posts.service';
 import { Post } from '../../model/post.model';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-single-post',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MatCardModule, MatButtonModule],
 
   templateUrl: './single-post.component.html',
   styleUrls: ['./single-post.component.scss'],
