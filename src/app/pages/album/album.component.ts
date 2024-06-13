@@ -1,11 +1,10 @@
-import { Component, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AlbumService } from '../../services/album.service';
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { MatPaginatorModule, MatPaginator } from '@angular/material/paginator';
 import { Post } from '../../model/post.model';
 import { Router } from '@angular/router';
-
 @Component({
   selector: 'app-album',
   standalone: true,
@@ -22,7 +21,7 @@ export class AlbumComponent {
   constructor(private postsService: AlbumService, private router: Router) {}
 
   ngOnInit() {
-    this.postsService.getAllAlbums().subscribe({
+    this.postsService.getAllPosts().subscribe({
       next: (data) => {
         this.dataSource.data = data;
       },
@@ -35,6 +34,6 @@ export class AlbumComponent {
   }
 
   viewPost(postId: number): void {
-    this.router.navigate(['/post', postId]);
+    this.router.navigate(['/single-album', postId]);
   }
 }

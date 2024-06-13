@@ -34,6 +34,13 @@ export const routes: Routes = [
       import('./pages/album/album.component').then((com) => com.AlbumComponent),
   },
   {
+    path: 'single-album/:id',
+    loadComponent: () =>
+      import('./pages/single-album/single-album.component').then(
+        (com) => com.SingleAlbumComponent
+      ),
+  },
+  {
     path: '',
     pathMatch: 'full',
     loadComponent: () =>

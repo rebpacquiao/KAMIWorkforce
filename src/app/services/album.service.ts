@@ -11,7 +11,7 @@ export class AlbumService {
 
   constructor() {}
 
-  getAllAlbums(): Observable<Post[]> {
+  getAllPosts(): Observable<Post[]> {
     return from(
       fetch(this.apiUrl).then((response) => {
         if (!response.ok) {
