@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class AuthService {
   user = new BehaviorSubject<User | null>(null);
   private supabase!: SupabaseClient;
+  private excludedPathsForDashboard = ['/list'];
 
   constructor(private router: Router) {
     this.supabase = createClient(
@@ -31,7 +32,9 @@ export class AuthService {
           'supabaseSession',
           JSON.stringify({ currentSession: session })
         );
-        this.router.navigate(['/dashboard']);
+        if (!router.url.includes('list')) {
+          this.router.navigate(['/dashboard']);
+        }
       } else if (
         event === 'SIGNED_OUT' ||
         session === undefined ||

@@ -17,7 +17,6 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  weatherForcast: string;
   logoutLabel: string;
   userData = signal({});
   userAvatar = signal({});
@@ -31,7 +30,6 @@ export class AppComponent implements OnInit {
     private router: Router,
     private cdr: ChangeDetectorRef
   ) {
-    this.weatherForcast = globalService.weatherForcast;
     this.logoutLabel = globalService.logout;
     this.auth.currentUser.pipe(take(1)).subscribe((user) => {
       // Use pipe and take operators
