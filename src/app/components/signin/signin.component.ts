@@ -11,7 +11,7 @@ import { ChangeDetectorRef } from '@angular/core';
   styleUrl: './signin.component.scss',
 })
 export class SigninComponent {
-  weatherForcastDescription: string;
+  loginDescription: string;
   loginLabel: string;
 
   constructor(
@@ -19,7 +19,7 @@ export class SigninComponent {
     private globalService: GlobalService,
     private cdr: ChangeDetectorRef
   ) {
-    this.weatherForcastDescription = globalService.description;
+    this.loginDescription = globalService.description;
     this.loginLabel = globalService.login;
   }
   async handleAuth() {

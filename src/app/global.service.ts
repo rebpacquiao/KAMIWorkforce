@@ -2,18 +2,15 @@ import { Injectable } from '@angular/core';
 
 const data = {
   GlobalService: {
-    weatherForcast: 'Weather Forcast',
+    appName: 'KAMIWorkforce',
   },
   description:
-    'Welcome to the weather forecast web application, Please login with your github to use the application and view the weather in your city.',
+    "For a quicker and more secure login, you can click the Login with GitHub button. This will redirect you to GitHub to authorize access. Once approved, you'll be automatically logged in to our platform.",
   login: {
     label: 'login',
   },
   logout: {
     label: 'logout',
-  },
-  displayWeather: {
-    label: 'Display Weather',
   },
 };
 
@@ -21,10 +18,9 @@ const data = {
   providedIn: 'root',
 })
 export class GlobalService {
-  public weatherForcast: string = data.GlobalService.weatherForcast;
+  public appName: string = data.GlobalService.appName;
   public description: string = data.description;
   public login: string = data.login.label;
   public logout: string = data.logout.label;
-  public displayWeather: string = data.displayWeather.label;
   constructor() {}
 }
