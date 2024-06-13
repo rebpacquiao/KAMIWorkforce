@@ -11,11 +11,23 @@ import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { MatPaginatorModule, MatPaginator } from '@angular/material/paginator';
 import { User } from '../../model/users.model';
 import { Router } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-users',
   standalone: true,
-  imports: [CommonModule, MatTableModule, MatPaginatorModule],
+  imports: [
+    CommonModule,
+    MatTableModule,
+    MatPaginatorModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
+  ],
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.scss'],
 })
@@ -32,8 +44,10 @@ export class UsersComponent implements OnInit, AfterViewInit {
     'action',
   ];
   dataSource = new MatTableDataSource<User>();
-
+  allUsers: User[] = [];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+  searchTerm: string = '';
 
   constructor(
     private postsService: UsersService,
@@ -41,8 +55,23 @@ export class UsersComponent implements OnInit, AfterViewInit {
     private cdr: ChangeDetectorRef
   ) {}
   ngOnInit() {
+    this.fetchUsers();
+  }
+
+  applyFilter() {
+    const filterValue = this.searchTerm.trim().toLowerCase();
+    this.dataSource.data = this.allUsers.filter(
+      (user: User) =>
+        user.name.toLowerCase().includes(filterValue) ||
+        user.username.toLowerCase().includes(filterValue) ||
+        user.email.toLowerCase().includes(filterValue)
+    );
+  }
+
+  fetchUsers(): void {
     this.postsService.getAllPosts().subscribe({
       next: (data: User[]) => {
+        this.allUsers = data;
         this.dataSource.data = data;
         this.cdr.detectChanges();
       },

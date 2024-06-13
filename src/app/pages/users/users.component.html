@@ -1,4 +1,17 @@
 <h1>Users</h1>
+<form class="example-form" style="padding: 8px">
+  <mat-form-field appearance="fill">
+    <mat-label>Search</mat-label>
+    <input
+      matInput
+      placeholder="Search name, username, and email"
+      [(ngModel)]="searchTerm"
+      (ngModelChange)="applyFilter()"
+      name="searchTerm"
+    />
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+</form>
 <div class="custom-light-theme">
   <table mat-table [dataSource]="dataSource" class="mat-table">
     <!-- ID Column -->
