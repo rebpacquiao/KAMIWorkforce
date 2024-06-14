@@ -1,14 +1,22 @@
-import { Component, OnInit, signal } from '@angular/core';
-import { Router, RouterOutlet } from '@angular/router';
+import { Component, OnInit, signal, OnDestroy } from '@angular/core';
+import {
+  Router,
+  RouterOutlet,
+  NavigationStart,
+  NavigationEnd,
+} from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { GlobalService } from './global.service';
 import { MatButtonModule } from '@angular/material/button';
 import { AuthService } from './services/auth.service';
 import { ChangeDetectorRef } from '@angular/core';
 import { take } from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { NavItem } from '../app/model/nav.model';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -19,17 +27,20 @@ import { NavItem } from '../app/model/nav.model';
     MatButtonModule,
     CommonModule,
     RouterModule,
+    MatProgressSpinnerModule,
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
+  isLoading = new BehaviorSubject<boolean>(false);
   logoutLabel: string;
   userData = signal({});
   userAvatar = signal({});
   gitHubLink = signal({});
   refreshToken = signal({});
   isLoggedIn = false;
+  private routerSubscription: Subscription | undefined;
 
   navItems: NavItem[] = [
     {
@@ -99,15 +110,30 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.routerSubscription = this.router.events.subscribe((event) => {
+      if (event instanceof NavigationStart) {
+        this.isLoading.next(true);
+      } else if (event instanceof NavigationEnd) {
+        this.isLoading.next(false);
+      }
+    });
+
+    this.isLoading.next(true);
     this.auth.currentUser.subscribe((user) => {
       if (user && user.user_metadata) {
         this.isLoggedIn = user != null;
         this.userData = user.user_metadata['full_name'];
         this.userAvatar = user.user_metadata['avatar_url'];
         this.gitHubLink = user.user_metadata['user_name'];
-        console.log(this.userData, 'full name');
+        this.isLoading.next(false);
         this.cdr.detectChanges();
       }
     });
+  }
+
+  ngOnDestroy() {
+    if (this.routerSubscription) {
+      this.routerSubscription.unsubscribe();
+    }
   }
 }
