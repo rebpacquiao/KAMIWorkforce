@@ -13,6 +13,7 @@ import { PostComponent } from '../components/post/post.component';
 import { ReportCardComponent } from '../components/report-card/report-card.component';
 import { PhotosOverviewComponent } from '../components/photos-overview/photos-overview.component';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { AlbumOverviewComponent } from '../components/album-overview/album-overview.component';
 
 @Component({
   selector: 'app-home',
@@ -28,6 +29,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
     PostComponent,
     ReportCardComponent,
     PhotosOverviewComponent,
+    AlbumOverviewComponent,
     CommonModule,
   ],
   templateUrl: './home.component.html',
