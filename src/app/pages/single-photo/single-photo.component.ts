@@ -12,20 +12,20 @@ import { MatCardModule } from '@angular/material/card';
   standalone: true,
   imports: [CommonModule, MatCardModule, MatButtonModule],
   templateUrl: './single-photo.component.html',
-  styleUrl: './single-photo.component.scss',
+  styleUrls: ['./single-photo.component.scss'],
 })
-export class SinglePhotoComponent {
+export class SinglePhotoComponent implements OnInit {
   post$!: Observable<Photos>;
 
   constructor(
-    private postsService: PhotosService,
+    private photosService: PhotosService,
     private route: ActivatedRoute,
     private changeDetectorRef: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
-    const postId = this.route.snapshot.params['id'];
-    this.post$ = this.postsService.getPostById(postId);
+    const photoId = this.route.snapshot.params['id'];
+    this.post$ = this.photosService.getPostById(photoId);
     this.changeDetectorRef.detectChanges();
   }
 }

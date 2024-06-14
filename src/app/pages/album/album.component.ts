@@ -11,14 +11,15 @@ import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { MatPaginatorModule, MatPaginator } from '@angular/material/paginator';
 import { Post } from '../../model/post.model';
 import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-album',
   standalone: true,
   imports: [CommonModule, MatTableModule, MatPaginatorModule],
   templateUrl: './album.component.html',
-  styleUrl: './album.component.scss',
+  styleUrls: ['./album.component.scss'],
 })
-export class AlbumComponent {
+export class AlbumComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['id', 'userId', 'title', 'action'];
   dataSource = new MatTableDataSource<Post>();
 

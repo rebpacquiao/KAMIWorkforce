@@ -12,9 +12,9 @@ import { MatCardModule } from '@angular/material/card';
   standalone: true,
   imports: [CommonModule, MatCardModule, MatButtonModule],
   templateUrl: './single-album.component.html',
-  styleUrl: './single-album.component.scss',
+  styleUrls: ['./single-album.component.scss'],
 })
-export class SingleAlbumComponent {
+export class SingleAlbumComponent implements OnInit {
   post$!: Observable<Post>;
 
   constructor(

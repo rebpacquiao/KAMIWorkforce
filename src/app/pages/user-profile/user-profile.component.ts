@@ -1,5 +1,5 @@
-import { Component, ChangeDetectorRef } from '@angular/core';
-import { ActivatedRoute, RouterModule } from '@angular/router'; // Import RouterModule
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
 import { UsersService } from '../../services/users.service';
@@ -14,18 +14,18 @@ import { MatCardModule } from '@angular/material/card';
   templateUrl: './user-profile.component.html',
   styleUrls: ['./user-profile.component.scss'],
 })
-export class UserProfileComponent {
+export class UserProfileComponent implements OnInit {
   post$!: Observable<User>;
 
   constructor(
-    private postsService: UsersService,
+    private usersService: UsersService,
     private route: ActivatedRoute,
     private changeDetectorRef: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
     this.changeDetectorRef.detectChanges();
-    const postId = this.route.snapshot.params['id'];
-    this.post$ = this.postsService.getPostById(postId);
+    const userId = this.route.snapshot.params['id'];
+    this.post$ = this.usersService.getPostById(userId);
   }
 }

@@ -4,6 +4,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { WelcomeComponent } from '../welcome/welcome.component';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 
+interface Post {
+  id: number;
+  title: string;
+  body: string;
+}
+
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -15,10 +21,10 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
     HttpClientModule,
   ],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.scss',
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  data: any[] = [];
+  data: Post[] = [];
 
   constructor(private httpClient: HttpClient) {}
 
@@ -28,8 +34,8 @@ export class LoginComponent implements OnInit {
 
   fetchData() {
     this.httpClient
-      .get('https://jsonplaceholder.typicode.com/posts')
-      .subscribe((data: any) => {
+      .get<Post[]>('https://jsonplaceholder.typicode.com/posts')
+      .subscribe((data: Post[]) => {
         this.data = data;
       });
   }

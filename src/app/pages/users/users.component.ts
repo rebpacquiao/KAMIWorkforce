@@ -4,6 +4,7 @@ import {
   ViewChild,
   AfterViewInit,
   ChangeDetectorRef,
+  OnDestroy,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UsersService } from '../../services/users.service';
@@ -17,11 +18,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { Subscription } from 'rxjs';
-
-interface Sorting {
-  value: string;
-  viewValue: string;
-}
 
 @Component({
   selector: 'app-users',
@@ -39,7 +35,7 @@ interface Sorting {
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.scss'],
 })
-export class UsersComponent implements OnInit, AfterViewInit {
+export class UsersComponent implements OnInit, AfterViewInit, OnDestroy {
   displayedColumns: string[] = [
     'id',
     'name',
@@ -60,13 +56,9 @@ export class UsersComponent implements OnInit, AfterViewInit {
 
   searchTerm: string = '';
   currentSortOrder: string = '';
-  sort: { value: string; viewValue: string }[] = [
-    { value: 'name-asc', viewValue: 'Ascending' },
-    { value: 'name-desc', viewValue: 'Descending' },
-  ];
 
   constructor(
-    private postsService: UsersService,
+    private usersService: UsersService,
     private router: Router,
     private cdr: ChangeDetectorRef,
     private activatedRoute: ActivatedRoute
@@ -108,7 +100,6 @@ export class UsersComponent implements OnInit, AfterViewInit {
         queryParamsHandling: 'merge',
       });
     } else {
-      // If searchTerm is not empty, navigate with the 'search' query parameter
       this.router.navigate([], {
         relativeTo: this.activatedRoute,
         queryParams: { search: this.searchTerm },
@@ -117,14 +108,10 @@ export class UsersComponent implements OnInit, AfterViewInit {
     }
   }
   fetchUsers(): void {
-    this.postsService.getAllPosts().subscribe({
+    this.usersService.getAllPosts().subscribe({
       next: (data: User[]) => {
         this.allUsers = data;
         this.dataSource.data = data;
-        this.cdr.detectChanges();
-      },
-      error: (error: any) => {
-        console.error('Failed to fetch users:', error);
         this.cdr.detectChanges();
       },
     });
@@ -134,14 +121,14 @@ export class UsersComponent implements OnInit, AfterViewInit {
     this.dataSource.paginator = this.paginator;
   }
 
-  viewPost(postId: number): void {
-    this.router.navigate(['/profile', postId]);
+  viewUser(userId: number): void {
+    this.router.navigate(['/profile', userId]);
   }
 
-  sortData(sortOrder: string, propertyName: string): void {
+  sortData(sortOrder: string, propertyName: keyof User): void {
     const sortedData = this.allUsers.sort((a, b) => {
-      const aValue = (a as any)[propertyName];
-      const bValue = (b as any)[propertyName];
+      const aValue = a[propertyName];
+      const bValue = b[propertyName];
 
       if (aValue < bValue) {
         return sortOrder === 'name-asc' ? -1 : 1;
