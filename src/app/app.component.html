@@ -1,5 +1,6 @@
 <div class="min-h-screen bg-gray-50/50 flex flex-col sm:flex-col lg:flex-row">
   <aside
+    *ngIf="isLoggedIn"
     class="bg-gradient-to-br from-gray-800 to-gray-900 -translate-x-80 inset-0 z-50 h-screen w-72 transition-transform duration-300 fixed xl:static xl:translate-x-0"
   >
     <div class="relative border-b border-white/20">
@@ -54,33 +55,24 @@
   </aside>
 
   <div class="w-full">
-    <mat-toolbar>
-      <form *ngIf="isLoggedIn">
-        <div class="d-flex user-details">
-          <span class="github-link"
-            ><a
-              class="git-link"
-              target="_blank"
-              [href]="'https://github.com/' + gitHubLink"
-              >Github</a
-            ></span
-          >
-          <span class="mr-2 user-data" [innerHTML]="userData"></span>
-          <img [src]="userAvatar" alt="user" class="user-image" />
-          <button (click)="signOut()" type="button" class="logout-btn">
-            {{ logoutLabel }}
-          </button>
-        </div>
-      </form>
+    <mat-toolbar class="bg-white col-mat-toolbar" *ngIf="isLoggedIn">
+      <div class="flex">
+        <div class="mr-auto"></div>
+        <form class="ml-auto" *ngIf="isLoggedIn">
+          <div class="d-flex user-details">
+            <img [src]="userAvatar" alt="user" class="user-image" />
+            <span class="mr-2 user-data" [innerHTML]="userData"></span>
+            <button (click)="signOut()" type="button" class="logout-btn">
+              {{ logoutLabel }}
+            </button>
+          </div>
+        </form>
+      </div>
     </mat-toolbar>
     <div class="main-content w-full">
       <router-outlet></router-outlet>
-      <div class="inset-0 flex justify-center items-center">
-        <mat-spinner
-          *ngIf="isLoading | async"
-          class="spinner"
-          [diameter]="50"
-        ></mat-spinner>
+      <div *ngIf="isLoading | async" class="spinner-container">
+        <mat-spinner class="spinner" [diameter]="50"></mat-spinner>
       </div>
     </div>
   </div>

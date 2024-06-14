@@ -105,6 +105,7 @@ export class AppComponent implements OnInit {
   signOut() {
     this.auth.signOut();
     this.isLoggedIn = false;
+    this.isLoading.next(false);
     this.cdr.detectChanges();
     this.router.navigate(['/login']);
   }
@@ -114,7 +115,9 @@ export class AppComponent implements OnInit {
       if (event instanceof NavigationStart) {
         this.isLoading.next(true);
       } else if (event instanceof NavigationEnd) {
-        this.isLoading.next(false);
+        setTimeout(() => {
+          this.isLoading.next(false);
+        }, 2000);
       }
     });
 
@@ -125,7 +128,9 @@ export class AppComponent implements OnInit {
         this.userData = user.user_metadata['full_name'];
         this.userAvatar = user.user_metadata['avatar_url'];
         this.gitHubLink = user.user_metadata['user_name'];
-        this.isLoading.next(false);
+        setTimeout(() => {
+          this.isLoading.next(false);
+        }, 2000);
         this.cdr.detectChanges();
       }
     });
