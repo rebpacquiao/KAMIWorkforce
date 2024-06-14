@@ -10,7 +10,8 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectorRef } from '@angular/core';
 import { environment } from '../../environments/environment.development';
 import { PostComponent } from '../components/post/post.component';
-
+import { ReportCardComponent } from '../components/report-card/report-card.component';
+import { PhotosOverviewComponent } from '../components/photos-overview/photos-overview.component';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 @Component({
@@ -25,6 +26,8 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
     MatTableModule,
     MatProgressBarModule,
     PostComponent,
+    ReportCardComponent,
+    PhotosOverviewComponent,
     CommonModule,
   ],
   templateUrl: './home.component.html',
