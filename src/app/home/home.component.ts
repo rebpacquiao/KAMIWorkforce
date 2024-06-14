@@ -14,6 +14,7 @@ import { ReportCardComponent } from '../components/report-card/report-card.compo
 import { PhotosOverviewComponent } from '../components/photos-overview/photos-overview.component';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { AlbumOverviewComponent } from '../components/album-overview/album-overview.component';
+import { UserOverviewComponent } from '../components/user-overview/user-overview.component';
 
 @Component({
   selector: 'app-home',
@@ -30,6 +31,7 @@ import { AlbumOverviewComponent } from '../components/album-overview/album-overv
     ReportCardComponent,
     PhotosOverviewComponent,
     AlbumOverviewComponent,
+    UserOverviewComponent,
     CommonModule,
   ],
   templateUrl: './home.component.html',

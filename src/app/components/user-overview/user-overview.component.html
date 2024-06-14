@@ -1,0 +1,34 @@
+<div
+  class="col-span-12 px-4 bg-white w-full shadow-default dark:border-strokedark dark:bg-boxdark xl:col-span-4"
+  *ngFor="let post of posts | slice : 0 : 5"
+>
+  <button
+    (click)="viewPost(post.id)"
+    class="flex w-full items-center gap-5 px-7.5 py-3 hover:bg-gray-3 dark:hover:bg-meta-4"
+  >
+    <div class="relative h-14 w-14 rounded-full">
+      <img src="../../../assets/user-demo.png" alt="User" />
+      <span
+        class="absolute bottom-0 right-0 h-3.5 w-3.5 rounded-full border-2 border-white bg-meta-3"
+      ></span>
+    </div>
+
+    <div class="flex flex-1 items-center text-left justify-between">
+      <div>
+        <h5 class="font-medium text-black m-0 dark:text-white">
+          {{ post.name }}
+        </h5>
+        <p>
+          <span class="text-sm font-medium text-black dark:text-white">{{
+            post.company.catchPhrase
+          }}</span>
+        </p>
+      </div>
+      <div
+        class="flex h-6 w-6 items-center justify-center rounded-full bg-primary"
+      >
+        <span class="text-sm font-medium text-white">{{ post.id }}</span>
+      </div>
+    </div>
+  </button>
+</div>
