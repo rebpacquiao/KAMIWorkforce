@@ -1,15 +1,22 @@
 <div class="login-section">
-  <p>
-    For a quicker and more secure login, you can click the Login with GitHub
-    button. This will redirect you to GitHub to authorize access. Once approved,
-    you'll be automatically logged in to our platform.
-  </p>
-  <button
-    (click)="handleAuth()"
-    mat-flat-button
-    color="primary"
-    class="default-btn"
-  >
-    Login
-  </button>
+  <div class="max-w-sm rounded overflow-hidden shadow-lg">
+    <div class="px-6 py-4">
+      <div class="font-bold text-xl mb-2">KAMIWorkforce</div>
+      <p class="text-gray-700 text-base">
+        For a quicker and more secure login, you can click the Login with GitHub
+        button. This will redirect you to GitHub to authorize access. Once
+        approved, you'll be automatically logged in to our platform.
+      </p>
+    </div>
+    <div class="w-full px-6 pt-4 pb-2">
+      <button
+        (click)="handleAuth()"
+        mat-flat-button
+        color="primary"
+        class="btn-primary w-full"
+      >
+        Login
+      </button>
+    </div>
+  </div>
 </div>

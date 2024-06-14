@@ -45,7 +45,7 @@
       </div>
     </div>
   </nav>
-  <div class="relative md:ml-64 w-full">
+  <div class="relative w-full" [ngClass]="{ 'md:ml-64': isLoggedIn }">
     <nav
       *ngIf="isLoggedIn"
       class="absolute top-0 left-0 w-full z-10 bg-white lg:flex-row lg:flex-nowrap lg:justify-start flex items-center py-1 px-4 lg:bg-transparent"

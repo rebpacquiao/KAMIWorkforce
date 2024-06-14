@@ -13,6 +13,7 @@ module.exports = {
       "violet-50": "#825ee4",
       "emerald-500": "#2dce89",
       "yellow-500": "#fbb140",
+      "login-500": "#111827",
     },
   },
   variants: {
