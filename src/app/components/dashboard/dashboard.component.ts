@@ -6,10 +6,12 @@ import { HomeComponent } from '../../home/home.component';
   standalone: true,
   imports: [HomeComponent],
   templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.scss',
+  styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log('DashboardComponent initialized');
+  }
 }

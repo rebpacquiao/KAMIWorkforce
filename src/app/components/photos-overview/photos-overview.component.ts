@@ -8,17 +8,19 @@ import { Photos } from '../../model/photos.model';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './photos-overview.component.html',
-  styleUrl: './photos-overview.component.scss',
+  styleUrls: ['./photos-overview.component.scss'],
 })
-export class PhotosOverviewComponent {
+export class PhotosOverviewComponent implements OnInit {
+  // Implements OnInit interface
   posts: Photos[] = [];
+
   constructor(private postsService: PhotosService) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.fetchPosts();
   }
 
-  fetchPosts() {
+  fetchPosts(): void {
     this.postsService.getAllPosts().subscribe({
       next: (data: Photos[]) => {
         this.posts = data.slice(0, 9);

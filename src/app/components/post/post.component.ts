@@ -9,17 +9,19 @@ import { Router } from '@angular/router';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './post.component.html',
-  styleUrl: './post.component.scss',
+  styleUrls: ['./post.component.scss'],
 })
-export class PostComponent {
-  constructor(private postsService: PostsService, private router: Router) {}
+export class PostComponent implements OnInit {
+  // Implements OnInit interface
   posts: Post[] = [];
 
-  ngOnInit() {
+  constructor(private postsService: PostsService, private router: Router) {}
+
+  ngOnInit(): void {
     this.fetchPosts();
   }
 
-  fetchPosts() {
+  fetchPosts(): void {
     this.postsService.getAllPosts().subscribe({
       next: (data: Post[]) => {
         this.posts = data;
