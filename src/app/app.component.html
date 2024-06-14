@@ -1,79 +1,109 @@
-<div class="min-h-screen bg-gray-50/50 flex flex-col sm:flex-col lg:flex-row">
-  <aside
+<div
+  class="w-full relative flex ct-docs-disable-sidebar-content max-h-[100vh] overflow-x-hidden"
+>
+  <nav
     *ngIf="isLoggedIn"
-    class="bg-gradient-to-br from-gray-800 to-gray-900 -translate-x-80 inset-0 z-50 h-screen w-72 transition-transform duration-300 fixed xl:static xl:translate-x-0"
+    class="block py-4 px-6 top-0 bottom-0 w-64 bg-dark-500 shadow-xl left-0 fixed flex-row flex-nowrap md:z-10 z-9999 transition-all duration-300 ease-in-out transform md:translate-x-0 -translate-x-full"
   >
-    <div class="relative border-b border-white/20">
-      <a class="flex items-center gap-4 py-6 px-8" href="#/">
-        <h1
-          class="block antialiased tracking-normal font-sans text-base font-semibold leading-relaxed text-white"
-        >
-          KAMI Workforce
-        </h1>
-      </a>
-      <button
-        class="middle none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-8 max-w-[32px] h-8 max-h-[32px] rounded-lg text-xs text-white hover:bg-white/10 active:bg-white/30 absolute right-0 top-0 grid rounded-br-none rounded-tl-none xl:hidden"
-        type="button"
+    <button
+      class="md:hidden flex items-center justify-center cursor-pointer text-blueGray-700 w-6 h-10 border-l-0 border-r border-t border-b border-solid border-blueGray-100 text-xl leading-none bg-white rounded-r border border-solid border-transparent absolute top-1/2 -right-24-px focus:outline-none z-9998"
+    >
+      <i class="fas fa-ellipsis-v"></i>
+    </button>
+    <div
+      class="flex-col min-h-full px-0 flex flex-wrap items-center justify-between w-full mx-auto overflow-y-auto overflow-x-hidden"
+    >
+      <div
+        class="flex flex-col items-stretch opacity-100 relative mt-4 overflow-y-auto overflow-x-hidden h-auto z-40 items-center flex-1 rounded w-full"
       >
-        <span
-          class="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2"
+        <a
+          class="md:flex items-center flex-col text-center md:pb-2 text-blueGray-700 mr-0 inline-flex whitespace-nowrap text-sm uppercase font-bold p-4 px-0"
+          ><span>KAMIWorkforce</span></a
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="2.5"
-            stroke="currentColor"
-            aria-hidden="true"
-            class="h-5 w-5 text-white"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M6 18L18 6M6 6l12 12"
-            ></path>
-          </svg>
-        </span>
-      </button>
-    </div>
-    <div class="m-4">
-      <ul class="mb-4 flex flex-col gap-1">
-        <li *ngFor="let item of navItems">
-          <a
-            [attr.aria-current]="item.ariaCurrent"
-            routerLinkActive="{{ item.routerLinkActive }}"
-            [routerLinkActiveOptions]="item.routerLinkActiveOptions"
-            [routerLink]="item.routerLink"
-          >
-            <button [ngClass]="item.buttonClass" type="button">
-              {{ item.buttonText }}
-            </button>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </aside>
+        <div class="md:flex-col md:min-w-full flex flex-col list-none">
+          <hr class="my-4 md:min-w-full" />
 
-  <div class="w-full">
-    <mat-toolbar class="bg-white col-mat-toolbar" *ngIf="isLoggedIn">
-      <div class="flex items-center w-full">
-        <div class="mr-auto"></div>
-        <form class="ml-auto" *ngIf="isLoggedIn">
-          <div class="d-flex user-details">
-            <img [src]="userAvatar" alt="user" class="user-image" />
-            <span class="mr-2 user-data" [innerHTML]="userData"></span>
-            <button (click)="signOut()" type="button" class="logout-btn">
-              <span class="material-symbols-outlined">logout</span>
-            </button>
+          <ul class="mb-4 flex flex-col gap-1">
+            <li *ngFor="let item of navItems">
+              <a
+                [attr.aria-current]="item.ariaCurrent"
+                routerLinkActive="{{ item.routerLinkActive }}"
+                [routerLinkActiveOptions]="item.routerLinkActiveOptions"
+                [routerLink]="item.routerLink"
+              >
+                <button [ngClass]="item.buttonClass" type="button">
+                  {{ item.buttonText }}
+                </button>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="relative md:ml-64 w-full">
+    <nav
+      *ngIf="isLoggedIn"
+      class="absolute top-0 left-0 w-full z-10 bg-white lg:flex-row lg:flex-nowrap lg:justify-start flex items-center py-1 px-4 lg:bg-transparent"
+    >
+      <div
+        class="w-full mx-aut0 items-center flex justify-between lg:flex-nowrap flex-wrap lg:px-6 px-4"
+      >
+        <a
+          href="javascript:;"
+          class="text-blueGray-800 lg:text-white text-sm uppercase inline-block font-semibold my-3"
+          >Settings Page</a
+        ><button
+          class="ml-auto cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-blueGray-400 rounded bg-transparent block outline-none focus:outline-none text-blueGray-300 lg:hidden"
+          type="button"
+        >
+          <i class="fas fa-bars"></i>
+        </button>
+        <div
+          class="items-center w-full lg:flex lg:w-auto flex-grow duration-300 transition-all ease-in-out lg:h-auto-important hidden"
+        >
+          <form class="ml-auto" *ngIf="isLoggedIn">
+            <div class="d-flex user-details">
+              <img [src]="userAvatar" alt="user" class="user-image" />
+              <span class="mr-2 user-data" [innerHTML]="userData"></span>
+              <button (click)="signOut()" type="button" class="logout-btn">
+                <span class="material-symbols-outlined">logout</span>
+              </button>
+            </div>
+          </form>
+          <div class="block z-50">
+            <div
+              class="bg-white text-base float-left p-2 border list-none text-left rounded-lg min-w-48 transition-all duration-100 ease-in-out transform scale-95 opacity-0 absolute origin-top-right"
+            >
+              <a
+                href="javascript:;"
+                class="text-sm px-3 py-2 block w-full whitespace-nowrap bg-transparent hover:bg-blueGray-100 rounded transition-all duration-100"
+                >Action</a
+              ><a
+                href="javascript:;"
+                class="text-sm px-3 py-2 block w-full whitespace-nowrap bg-transparent hover:bg-blueGray-100 rounded transition-all duration-100"
+                >Another action</a
+              ><a
+                href="javascript:;"
+                class="text-sm px-3 py-2 block w-full whitespace-nowrap bg-transparent hover:bg-blueGray-100 rounded transition-all duration-100"
+                >Something else here</a
+              >
+              <div
+                class="h-0 my-2 border border-solid border-blueGray-100"
+              ></div>
+              <a
+                href="javascript:;"
+                class="text-sm px-3 py-2 block w-full whitespace-nowrap bg-transparent hover:bg-blueGray-100 rounded transition-all duration-100"
+                >Seprated link</a
+              >
+            </div>
           </div>
-        </form>
+        </div>
       </div>
-    </mat-toolbar>
-    <div class="main-content w-full">
-      <router-outlet></router-outlet>
-      <div *ngIf="isLoading | async" class="spinner-container">
-        <mat-spinner class="spinner" [diameter]="50"></mat-spinner>
-      </div>
+    </nav>
+    <router-outlet></router-outlet>
+    <div *ngIf="isLoading | async" class="spinner-container">
+      <mat-spinner class="spinner" [diameter]="50"></mat-spinner>
     </div>
   </div>
 </div>

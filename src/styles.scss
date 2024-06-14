@@ -46,7 +46,7 @@ $angular-app-theme: mat.define-light-theme(
 }
 
 body {
-  background-color: #eceff180;
+  background-color: #f1f5f9;
 }
 
 .mat-body p,
@@ -82,4 +82,8 @@ body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.app-margin {
+  margin-top: 6rem;
 }
