@@ -2,8 +2,14 @@
 import { createReducer, on } from '@ngrx/store';
 import * as UserActions from '../actions/user.actions';
 
+interface UserMetadata {
+  id: number;
+  name: string;
+  email: string;
+}
+
 export interface UserState {
-  userData: any;
+  userData: UserMetadata | null;
 }
 
 const initialState: UserState = {
@@ -13,7 +19,6 @@ const initialState: UserState = {
 export const userReducer = createReducer(
   initialState,
   on(UserActions.setUserMetadata, (state, { metadata }) => ({
-    // Update this to setUserMetadata
     ...state,
     userData: metadata,
   }))
