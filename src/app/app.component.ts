@@ -1,4 +1,4 @@
-import { Component, OnInit, signal, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {
   Router,
   RouterOutlet,
@@ -32,13 +32,13 @@ import { Subscription } from 'rxjs';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
   isLoading = new BehaviorSubject<boolean>(false);
   logoutLabel: string;
-  userData = signal({});
-  userAvatar = signal({});
-  gitHubLink = signal({});
-  refreshToken = signal({});
+  userData = {};
+  userAvatar = {};
+  gitHubLink = {};
+  refreshToken = {};
   isLoggedIn = false;
   private routerSubscription: Subscription | undefined;
 
@@ -121,7 +121,6 @@ export class AppComponent implements OnInit {
       }
     });
 
-    // Subscribe to the AuthService's isLoading BehaviorSubject
     this.auth.isLoading.subscribe((isLoading) => {
       this.isLoading.next(isLoading);
       this.cdr.detectChanges();
