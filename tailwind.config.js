@@ -9,6 +9,10 @@ module.exports = {
       "gray-50": "#f8f9fa",
       "meta-3": "#10b981",
       "meta-4": "#3b82f6",
+      "green-500": "#f43f5e",
+      "violet-50": "#825ee4",
+      "emerald-500": "#2dce89",
+      "yellow-500": "#fbb140",
     },
   },
   variants: {
