@@ -16,25 +16,33 @@
           <!-- ID Column -->
           <ng-container matColumnDef="id">
             <th mat-header-cell *matHeaderCellDef>ID</th>
-            <td mat-cell *matCellDef="let post">{{ post.id }}</td>
+            <td mat-cell *matCellDef="let post">
+              <span class="text-gray-600">{{ post.id }}</span>
+            </td>
           </ng-container>
 
           <!-- User ID Column -->
           <ng-container matColumnDef="userId">
             <th mat-header-cell *matHeaderCellDef>User ID</th>
-            <td mat-cell *matCellDef="let post">{{ post.userId }}</td>
+            <td mat-cell *matCellDef="let post">
+              <span class="text-gray-600">{{ post.userId }}</span>
+            </td>
           </ng-container>
 
           <!-- Title Column -->
           <ng-container matColumnDef="title">
             <th mat-header-cell *matHeaderCellDef>Title</th>
-            <td mat-cell *matCellDef="let post">{{ post.title }}</td>
+            <td mat-cell *matCellDef="let post">
+              <span class="font-medium">{{ post.title }}</span>
+            </td>
           </ng-container>
 
           <!-- Body Column -->
           <ng-container matColumnDef="body">
             <th mat-header-cell *matHeaderCellDef>Body</th>
-            <td mat-cell *matCellDef="let post">{{ post.body }}</td>
+            <td mat-cell *matCellDef="let post">
+              <span class="text-gray-500">{{ post.body }}</span>
+            </td>
           </ng-container>
 
           <!-- Action Column -->

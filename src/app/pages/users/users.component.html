@@ -80,7 +80,9 @@
             <!-- User Name Column -->
             <ng-container matColumnDef="name">
               <th mat-header-cell *matHeaderCellDef>Name</th>
-              <td mat-cell *matCellDef="let post">{{ post.name }}</td>
+              <td mat-cell *matCellDef="let post">
+                <span class="font-medium">{{ post.name }}</span>
+              </td>
             </ng-container>
 
             <!-- Username -->
@@ -92,7 +94,9 @@
             <!--Email -->
             <ng-container matColumnDef="email">
               <th mat-header-cell *matHeaderCellDef>Email</th>
-              <td mat-cell *matCellDef="let post">{{ post.email }}</td>
+              <td mat-cell *matCellDef="let post">
+                <span class="text-blue-500">{{ post.email }}</span>
+              </td>
             </ng-container>
 
             <!--Address -->
@@ -104,7 +108,9 @@
             <!--Phone -->
             <ng-container matColumnDef="phone">
               <th mat-header-cell *matHeaderCellDef>Phone</th>
-              <td mat-cell *matCellDef="let post">{{ post.phone }}</td>
+              <td mat-cell *matCellDef="let post">
+                <span class="phone-text">{{ post.phone }}</span>
+              </td>
             </ng-container>
 
             <!--Website -->
@@ -124,8 +130,14 @@
               <th mat-header-cell *matHeaderCellDef>Actions</th>
               <td mat-cell *matCellDef="let post">
                 <!-- Example Action Button -->
-                <button (click)="viewPost(post.id)" mat-button>
-                  <span class="material-symbols-outlined"> visibility </span>
+                <button
+                  class="text-icon-500"
+                  (click)="viewPost(post.id)"
+                  mat-button
+                >
+                  <span class="material-symbols-outlined text-icon-500">
+                    visibility
+                  </span>
                 </button>
               </td>
             </ng-container>

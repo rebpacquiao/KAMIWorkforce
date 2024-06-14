@@ -14,6 +14,10 @@ module.exports = {
       "emerald-500": "#2dce89",
       "yellow-500": "#fbb140",
       "login-500": "#111827",
+      "blue-500": "#0ea5e9",
+      "icon-500": "#94A3B8",
+      "gray-500": "#475569",
+      "gray-600": "#cbd5e1",
     },
   },
   variants: {
