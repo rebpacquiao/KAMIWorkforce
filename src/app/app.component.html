@@ -14,17 +14,21 @@
       class="flex-col min-h-full px-0 flex flex-wrap items-center justify-between w-full mx-auto overflow-y-auto overflow-x-hidden"
     >
       <div
-        class="flex flex-col items-stretch opacity-100 relative mt-4 overflow-y-auto overflow-x-hidden h-auto z-40 items-center flex-1 rounded w-full"
+        class="flex flex-col w-full opacity-100 relative mt-4 overflow-y-auto overflow-x-hidden h-auto z-40 items-center flex-1 rounded w-full"
       >
         <a
-          class="md:flex items-center flex-col text-center md:pb-2 text-blueGray-700 mr-0 inline-flex whitespace-nowrap text-sm uppercase font-bold p-4 px-0"
+          class="md:flex items-center flex-col text-center md:pb-2 text-white mr-0 inline-flex whitespace-nowrap text-lg uppercase font-bold"
           ><span>KAMIWorkforce</span></a
         >
         <div class="md:flex-col md:min-w-full flex flex-col list-none">
-          <hr class="my-4 md:min-w-full" />
+          <hr class="my-4 border-white md:min-w-full" />
 
           <ul class="mb-4 flex flex-col gap-1">
-            <li *ngFor="let item of navItems">
+            <li
+              class="flex flex-row gap-3 items-center"
+              *ngFor="let item of navItems"
+            >
+              <span class="material-symbols-outlined"> {{ item.icon }} </span>
               <a
                 [attr.aria-current]="item.ariaCurrent"
                 routerLinkActive="{{ item.routerLinkActive }}"

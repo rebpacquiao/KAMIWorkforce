@@ -48,45 +48,45 @@ export class AppComponent implements OnInit {
       routerLinkActive: ['active'],
       routerLinkActiveOptions: { exact: true },
       routerLink: '/dashboard',
-      buttonClass:
-        'text-xs uppercase py-3 font-bold block text-blueGray-800 hover:text-blueGray-500',
+      buttonClass: 'text-xs uppercase py-3 font-bold block text-white',
       buttonText: 'dashboard',
+      icon: 'dashboard',
     },
     {
       ariaCurrent: 'page',
       routerLinkActive: ['active'],
       routerLinkActiveOptions: { exact: true },
       routerLink: '/post',
-      buttonClass:
-        'text-xs uppercase py-3 font-bold block text-blueGray-800 hover:text-blueGray-500',
+      buttonClass: 'text-xs uppercase py-3 font-bold block text-white',
       buttonText: 'Post',
+      icon: 'signpost',
     },
     {
       ariaCurrent: 'page',
       routerLinkActive: ['active'],
       routerLinkActiveOptions: { exact: true },
       routerLink: '/album',
-      buttonClass:
-        'text-xs uppercase py-3 font-bold block text-blueGray-800 hover:text-blueGray-500',
+      buttonClass: 'text-xs uppercase py-3 font-bold block text-white',
       buttonText: 'Albums',
+      icon: 'auto_stories',
     },
     {
       ariaCurrent: 'page',
       routerLinkActive: ['active'],
       routerLinkActiveOptions: { exact: true },
       routerLink: '/photo',
-      buttonClass:
-        'text-xs uppercase py-3 font-bold block text-blueGray-800 hover:text-blueGray-500',
-      buttonText: 'Photo',
+      buttonClass: 'text-xs uppercase py-3 font-bold block text-white',
+      buttonText: 'Photos',
+      icon: 'photo_camera',
     },
     {
       ariaCurrent: 'page',
       routerLinkActive: ['active'],
       routerLinkActiveOptions: { exact: true },
       routerLink: '/users',
-      buttonClass:
-        'text-xs uppercase py-3 font-bold block text-blueGray-800 hover:text-blueGray-500',
+      buttonClass: 'text-xs uppercase py-3 font-bold block text-white',
       buttonText: 'Users',
+      icon: 'group',
     },
   ];
 

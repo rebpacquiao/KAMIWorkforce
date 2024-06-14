@@ -5,4 +5,5 @@ export interface NavItem {
   routerLink: string;
   buttonClass: string;
   buttonText: string;
+  icon: string;
 }
