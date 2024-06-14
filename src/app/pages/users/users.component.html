@@ -9,11 +9,13 @@
           type="search"
           id="default-search"
           [(ngModel)]="searchTerm"
-          (ngModelChange)="applyFilter()"
           name="searchTerm"
+          placeholder="Search Name"
           class="btn bg-white text-left dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-500"
         />
-        <button class="btn-primary">Search</button>
+        <button (click)="updateSearchQuery()" class="btn-primary">
+          Search
+        </button>
       </form>
       <div class="relative inline-block text-left">
         <div>
@@ -122,7 +124,9 @@
               <th mat-header-cell *matHeaderCellDef>Actions</th>
               <td mat-cell *matCellDef="let post">
                 <!-- Example Action Button -->
-                <button (click)="viewPost(post.id)" mat-button>View</button>
+                <button (click)="viewPost(post.id)" mat-button>
+                  <span class="material-symbols-outlined"> visibility </span>
+                </button>
               </td>
             </ng-container>
 

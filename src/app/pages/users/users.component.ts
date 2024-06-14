@@ -10,12 +10,13 @@ import { UsersService } from '../../services/users.service';
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { MatPaginatorModule, MatPaginator } from '@angular/material/paginator';
 import { User } from '../../model/users.model';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
+import { Subscription } from 'rxjs';
 
 interface Sorting {
   value: string;
@@ -53,6 +54,8 @@ export class UsersComponent implements OnInit, AfterViewInit {
   dataSource = new MatTableDataSource<User>();
   allUsers: User[] = [];
   showDropdown = false;
+  private queryParamSubscription!: Subscription;
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   searchTerm: string = '';
@@ -65,12 +68,14 @@ export class UsersComponent implements OnInit, AfterViewInit {
   constructor(
     private postsService: UsersService,
     private router: Router,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private activatedRoute: ActivatedRoute
   ) {}
+
   ngOnInit() {
     this.fetchUsers();
+    this.subscribeToQueryParams();
   }
-
   applyFilter() {
     const filterValue = this.searchTerm.trim().toLowerCase();
     this.dataSource.data = this.allUsers.filter(
@@ -81,6 +86,36 @@ export class UsersComponent implements OnInit, AfterViewInit {
     );
   }
 
+  subscribeToQueryParams() {
+    this.queryParamSubscription = this.activatedRoute.queryParams.subscribe(
+      (params) => {
+        const searchQuery = params['search'];
+        if (searchQuery) {
+          this.searchTerm = searchQuery;
+          this.applyFilter();
+        } else {
+          this.fetchUsers();
+        }
+      }
+    );
+  }
+
+  updateSearchQuery(): void {
+    if (this.searchTerm.trim() === '') {
+      this.router.navigate([], {
+        relativeTo: this.activatedRoute,
+        queryParams: { search: null },
+        queryParamsHandling: 'merge',
+      });
+    } else {
+      // If searchTerm is not empty, navigate with the 'search' query parameter
+      this.router.navigate([], {
+        relativeTo: this.activatedRoute,
+        queryParams: { search: this.searchTerm },
+        queryParamsHandling: 'merge',
+      });
+    }
+  }
   fetchUsers(): void {
     this.postsService.getAllPosts().subscribe({
       next: (data: User[]) => {
@@ -123,5 +158,11 @@ export class UsersComponent implements OnInit, AfterViewInit {
 
   toggleDropdown(): void {
     this.showDropdown = !this.showDropdown;
+  }
+
+  ngOnDestroy() {
+    if (this.queryParamSubscription) {
+      this.queryParamSubscription.unsubscribe();
+    }
   }
 }
