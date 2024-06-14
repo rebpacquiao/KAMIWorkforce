@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
@@ -19,11 +19,13 @@ export class SinglePhotoComponent {
 
   constructor(
     private postsService: PhotosService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private changeDetectorRef: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
     const postId = this.route.snapshot.params['id'];
     this.post$ = this.postsService.getPostById(postId);
+    this.changeDetectorRef.detectChanges();
   }
 }

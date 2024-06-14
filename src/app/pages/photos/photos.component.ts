@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PhotosService } from '../../services/photos.service';
 import { Photos } from '../../model/photos.model';
@@ -16,7 +16,11 @@ export class PhotosComponent implements OnInit {
   currentPage: number = 1;
   itemsPerPage: number = 24;
 
-  constructor(private photosService: PhotosService, private router: Router) {}
+  constructor(
+    private photosService: PhotosService,
+    private router: Router,
+    private changeDetectorRef: ChangeDetectorRef
+  ) {}
 
   ngOnInit() {
     this.fetchPhotos();
@@ -32,6 +36,8 @@ export class PhotosComponent implements OnInit {
           url: post.url,
           thumbnailUrl: post.thumbnailUrl || post.url,
         }));
+
+        this.changeDetectorRef.detectChanges();
       },
       error: (error) => console.error(error),
     });

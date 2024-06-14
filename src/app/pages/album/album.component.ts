@@ -1,4 +1,10 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  AfterViewInit,
+  ChangeDetectorRef,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AlbumService } from '../../services/album.service';
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
@@ -18,12 +24,17 @@ export class AlbumComponent {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private postsService: AlbumService, private router: Router) {}
+  constructor(
+    private postsService: AlbumService,
+    private router: Router,
+    private changeDetectorRef: ChangeDetectorRef
+  ) {}
 
   ngOnInit() {
     this.postsService.getAllPosts().subscribe({
       next: (data) => {
         this.dataSource.data = data;
+        this.changeDetectorRef.detectChanges();
       },
       error: (error) => console.error(error),
     });

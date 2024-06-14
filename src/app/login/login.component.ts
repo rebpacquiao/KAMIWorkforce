@@ -27,11 +27,9 @@ export class LoginComponent implements OnInit {
   }
 
   fetchData() {
-    console.log('Fetching data');
     this.httpClient
       .get('https://jsonplaceholder.typicode.com/posts')
       .subscribe((data: any) => {
-        console.log(data);
         this.data = data;
       });
   }

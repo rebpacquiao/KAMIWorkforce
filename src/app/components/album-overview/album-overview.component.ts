@@ -22,7 +22,6 @@ export class AlbumOverviewComponent {
   fetchPosts() {
     this.postsService.getAllPosts().subscribe({
       next: (data: Post[]) => {
-        console.log(data);
         this.posts = data;
       },
       error: (error) => console.error(error),

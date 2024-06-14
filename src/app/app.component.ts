@@ -113,15 +113,20 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.routerSubscription = this.router.events.subscribe((event) => {
       if (event instanceof NavigationStart) {
-        this.isLoading.next(true);
+        this.auth.isLoading.next(true);
       } else if (event instanceof NavigationEnd) {
         setTimeout(() => {
-          this.isLoading.next(false);
+          this.auth.isLoading.next(false);
         }, 2000);
       }
     });
 
-    this.isLoading.next(true);
+    // Subscribe to the AuthService's isLoading BehaviorSubject
+    this.auth.isLoading.subscribe((isLoading) => {
+      this.isLoading.next(isLoading);
+      this.cdr.detectChanges();
+    });
+
     this.auth.currentUser.subscribe((user) => {
       if (user && user.user_metadata) {
         this.isLoggedIn = user != null;

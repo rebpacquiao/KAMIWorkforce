@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router'; // Import RouterModule
 import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
@@ -19,10 +19,12 @@ export class UserProfileComponent {
 
   constructor(
     private postsService: UsersService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private changeDetectorRef: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
+    this.changeDetectorRef.detectChanges();
     const postId = this.route.snapshot.params['id'];
     this.post$ = this.postsService.getPostById(postId);
   }

@@ -9,8 +9,9 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
   user = new BehaviorSubject<User | null>(null);
+  isLoading = new BehaviorSubject<boolean>(true);
   private supabase!: SupabaseClient;
-  private excludedPathsForDashboard = ['/list', 'post/:id'];
+  private excludedPathsForDashboard = ['/post', 'post/:id'];
 
   constructor(private router: Router) {
     this.supabase = createClient(
@@ -20,6 +21,7 @@ export class AuthService {
 
     // Check if user session exists in storage when AuthService initializes
     const session = sessionStorage.getItem('supabaseSession');
+    console.log(session, 'session');
     if (session) {
       const userSession = JSON.parse(session);
       this.user.next(userSession.currentSession.user);
@@ -32,7 +34,8 @@ export class AuthService {
           'supabaseSession',
           JSON.stringify({ currentSession: session })
         );
-        if (!router.url.includes('list')) {
+        this.isLoading.next(false); // Hide loader
+        if (!this.router.url.includes('list')) {
           this.router.navigate(['/dashboard']);
         }
       } else if (
@@ -42,6 +45,7 @@ export class AuthService {
       ) {
         sessionStorage.removeItem('supabaseSession');
         this.router.navigate(['/login']);
+        this.isLoading.next(true); // Show loader
       }
     });
   }

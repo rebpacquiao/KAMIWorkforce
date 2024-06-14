@@ -25,7 +25,7 @@ export class SigninComponent {
   async handleAuth() {
     const response = await this.auth.signInWithGithub();
 
-    console.log(response);
+    return response;
   }
 
   ngOninit() {
