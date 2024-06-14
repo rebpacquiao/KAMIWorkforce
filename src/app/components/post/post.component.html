@@ -1,0 +1,26 @@
+<ul class="overview-list">
+  <li class="flex w-full" *ngFor="let post of posts | slice : 0 : 10">
+    <div class="flex items-center dark:border-slate-700 text-sm w-full">
+      <div class="flex w-full">
+        <div class="rounded-full overview-icon">
+          <span class="material-symbols-outlined"> check </span>
+        </div>
+        <div class="self-center mr-auto">
+          <a class="text-slate-800 dark:text-slate-100">Qonto</a>
+          {{ post.title }}
+        </div>
+        <div class="flex-shrink-0 self-start ml-auto">
+          <button
+            class="text-indigo-500 view flex items-center"
+            (click)="viewPost(post.id)"
+          >
+            View
+            <span class="material-symbols-outlined arrow-rigth">
+              arrow_forward
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </li>
+</ul>

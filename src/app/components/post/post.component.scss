@@ -1,0 +1,29 @@
+.overview-list {
+  li {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #f1f5f9;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    .vew {
+      font-weight: 500;
+    }
+
+    .arrow-rigth {
+      font-size: 13px;
+    }
+    .overview-icon {
+      background-color: #6366f1;
+      width: 2.25rem;
+      height: 2.25rem;
+      margin-right: 1rem;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

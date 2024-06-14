@@ -9,6 +9,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { CommonModule } from '@angular/common';
 import { ChangeDetectorRef } from '@angular/core';
 import { environment } from '../../environments/environment.development';
+import { PostComponent } from '../components/post/post.component';
 
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 
@@ -23,6 +24,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
     HttpClientModule,
     MatTableModule,
     MatProgressBarModule,
+    PostComponent,
     CommonModule,
   ],
   templateUrl: './home.component.html',

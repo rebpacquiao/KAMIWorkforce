@@ -122,7 +122,7 @@
   <div class="flex flex-wrap">
     <div class="w-full xl:w-8/12 px-4">
       <div
-        class="relative flex flex-col min-w-0 break-words w-full mb-8 shadow-lg rounded-lg bg-blueGray-800"
+        class="relative bg-white flex flex-col min-w-0 break-words w-full mb-8 shadow-lg rounded-lg bg-blueGray-800"
       >
         <div class="rounded-t mb-0 px-4 py-3 bg-transparent">
           <div class="flex flex-wrap items-center">
@@ -132,23 +132,13 @@
               >
                 Overview
               </h6>
-              <h2 class="text-xl font-semibold text-white">Sales value</h2>
+              <h2 class="text-xl font-semibold">Post</h2>
             </div>
           </div>
         </div>
         <div class="p-4 flex-auto">
           <div class="relative h-350-px">
-            <canvas
-              width="496"
-              height="291"
-              style="
-                display: block;
-                box-sizing: border-box;
-                height: 350px;
-                width: 595.5px;
-              "
-              id="line-chart"
-            ></canvas>
+            <app-post></app-post>
           </div>
         </div>
       </div>
