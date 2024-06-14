@@ -48,5 +48,7 @@ export class HomeComponent implements OnInit {
     private cdr: ChangeDetectorRef
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log('HomeComponent');
+  }
 }

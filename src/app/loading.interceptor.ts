@@ -13,10 +13,10 @@ import { LoadingService } from './services/loading.service';
 export class LoadingInterceptor implements HttpInterceptor {
   constructor(private loadingService: LoadingService) {}
 
-  intercept(
-    request: HttpRequest<any>,
+  intercept<T>(
+    request: HttpRequest<T>,
     next: HttpHandler
-  ): Observable<HttpEvent<any>> {
+  ): Observable<HttpEvent<T>> {
     this.loadingService.show();
     return next
       .handle(request)

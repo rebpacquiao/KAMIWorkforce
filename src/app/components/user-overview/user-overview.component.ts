@@ -9,13 +9,14 @@ import { Router } from '@angular/router';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './user-overview.component.html',
-  styleUrl: './user-overview.component.scss',
+  styleUrls: ['./user-overview.component.scss'],
 })
-export class UserOverviewComponent {
+export class UserOverviewComponent implements OnInit {
+  // Added 'implements OnInit'
   constructor(private postsService: UsersService, private router: Router) {}
   posts: User[] = [];
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.fetchPosts();
   }
 
