@@ -52,6 +52,7 @@ export class UsersComponent implements OnInit, AfterViewInit {
   ];
   dataSource = new MatTableDataSource<User>();
   allUsers: User[] = [];
+  showDropdown = false;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   searchTerm: string = '';
@@ -104,7 +105,6 @@ export class UsersComponent implements OnInit, AfterViewInit {
 
   sortData(sortOrder: string, propertyName: string): void {
     const sortedData = this.allUsers.sort((a, b) => {
-      // Corrected from `property` to `propertyName`
       const aValue = (a as any)[propertyName];
       const bValue = (b as any)[propertyName];
 
@@ -119,5 +119,9 @@ export class UsersComponent implements OnInit, AfterViewInit {
 
     this.dataSource.data = sortedData;
     this.cdr.detectChanges();
+  }
+
+  toggleDropdown(): void {
+    this.showDropdown = !this.showDropdown;
   }
 }

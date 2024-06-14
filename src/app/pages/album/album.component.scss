@@ -1,0 +1,31 @@
+.custom-light-theme {
+  border: 0;
+
+  th {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    color: #64748b;
+    background-color: #f8fafc;
+    border-top: 1px solid #e2e8f0;
+    border-color: #e2e8f0;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    text-transform: uppercase;
+    font-family: 600;
+    white-space: nowrap;
+  }
+
+  td {
+    color: #1e293b;
+    border-color: #e9ecef;
+  }
+}
+
+.page-title {
+  font-size: 1.88rem;
+  line-height: 1.33;
+  letter-spacing: -0.01em;
+  color: #1e293b;
+}

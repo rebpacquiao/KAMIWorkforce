@@ -1,49 +1,72 @@
 <div class="w-full app-margin px-4">
+  <div class="flex flex-col md:flex-row lg:flex-row xl:flex-row">
+    <h1 class="text-slate-800 dark:text-slate-100 font-bold page-title">
+      Users
+    </h1>
+    <div class="ml-auto flex flex-row items-center gap-5">
+      <form class="flex flex-row gap-2 items-center">
+        <input
+          type="search"
+          id="default-search"
+          [(ngModel)]="searchTerm"
+          (ngModelChange)="applyFilter()"
+          name="searchTerm"
+          class="btn bg-white text-left dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-500"
+        />
+        <button class="btn-primary">Search</button>
+      </form>
+      <div class="relative inline-block text-left">
+        <div>
+          <button
+            type="button"
+            class="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+            id="menu-button"
+            aria-expanded="true"
+            aria-haspopup="true"
+            (click)="toggleDropdown()"
+          >
+            <span class="material-symbols-outlined"> filter_list </span>
+          </button>
+        </div>
+
+        <div
+          *ngIf="showDropdown"
+          class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+          role="menu"
+          aria-orientation="vertical"
+          aria-labelledby="menu-button"
+          tabindex="-1"
+        >
+          <div class="flex flex-col gap-1 text-left py-1" role="none">
+            <button
+              class="text-left px-2"
+              (click)="sortData('name-asc', 'name')"
+            >
+              Ascending
+            </button>
+            <button
+              class="text-left px-2"
+              (click)="sortData('name-desc', 'name')"
+            >
+              Descending
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <div
-    class="relative flex flex-col min-w-0 break-words w-full mb-8 rounded-lg bg-white text-blueGray-700"
+    class="bg-white dark:bg-slate-800 rounded-sm border border-slate-200 dark:border-slate-700 box-table"
   >
-    <div class="px-6 py-4 border-0">
+    <div class="px-2 py-1 border-0">
       <div class="flex flex-wrap items-center">
         <div class="relative w-full max-w-full flex-grow flex-1">
-          <h3 class="font-bold text-lg text-blueGray-700">Users</h3>
+          <h2 class="text-slate-800 mt-2 dark:text-slate-100">All Users</h2>
         </div>
       </div>
     </div>
     <div class="block w-full overflow-x-auto">
       <div class="custom-light-theme">
-        <div class="flex">
-          <div class="mr-auto">
-            <form class="example-form">
-              <mat-form-field appearance="fill">
-                <mat-label>Search</mat-label>
-                <input
-                  matInput
-                  placeholder="Search name, username, and email"
-                  [(ngModel)]="searchTerm"
-                  (ngModelChange)="applyFilter()"
-                  name="searchTerm"
-                />
-                <mat-icon matSuffix>search</mat-icon>
-              </mat-form-field>
-            </form>
-          </div>
-          <div class="ml-auto">
-            <mat-form-field appearance="fill">
-              <mat-label>Sort Order</mat-label>
-              <mat-select
-                [(value)]="currentSortOrder"
-                (selectionChange)="sortData(currentSortOrder, 'name')"
-              >
-                <mat-option
-                  *ngFor="let sortOption of sort"
-                  [value]="sortOption.value"
-                >
-                  {{ sortOption.viewValue }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
-        </div>
         <div class="custom-light-theme">
           <table mat-table [dataSource]="dataSource" class="mat-table">
             <!-- ID Column -->
