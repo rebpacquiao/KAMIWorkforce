@@ -27,7 +27,9 @@
             aria-haspopup="true"
             (click)="toggleDropdown()"
           >
-            <span class="material-symbols-outlined"> filter_list </span>
+            <span class="material-symbols-outlined filter-color">
+              filter_list
+            </span>
           </button>
         </div>
 
@@ -39,7 +41,10 @@
           aria-labelledby="menu-button"
           tabindex="-1"
         >
-          <div class="flex flex-col gap-1 text-left py-1" role="none">
+          <div
+            class="flex flex-col gap-1 text-left py-1 filter-dropdown"
+            role="none"
+          >
             <button
               class="text-left px-2"
               (click)="sortData('name-asc', 'name')"
